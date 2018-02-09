@@ -10,12 +10,22 @@ public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	public long id;
 	public String title;
 	public String author;
 	public int year;
 	public int isbn;
 	public double price;
+	
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getTitle() {
 		return title;
 	}
