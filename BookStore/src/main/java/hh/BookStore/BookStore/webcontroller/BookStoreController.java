@@ -26,10 +26,10 @@ public class BookStoreController {
 	}
 	
 	
-	 @RequestMapping(value="/addbook", method=RequestMethod.GET)	
+	 @RequestMapping(value="/addbook")	
 	public String addBook(Model model){
 		 model.addAttribute("book", new Book());
-		 model.addAttribute("category", crepository.findAll());
+		 model.addAttribute("categories", crepository.findAll());
 		return "addbook"; 
 	 }
 
@@ -41,14 +41,15 @@ public class BookStoreController {
 	 }
 	 
 	 @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	 public String deleteBook(@PathVariable("id") long bookId, Model model) {
+	 public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 	 repository.delete(bookId);
 	 return "redirect:../booklist";
 	 }
 	 
 	 @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	 public String editBook(@PathVariable("id") long bookId, Model model) {
+	 public String editBook(@PathVariable("id") Long bookId, Model model) {
 	 model.addAttribute("book", repository.findOne(bookId));
+	 model.addAttribute("categories", crepository.findAll());
 	 return "editbook";
 	 }
 
