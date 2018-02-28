@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Category {
@@ -18,6 +20,7 @@ public class Category {
 	private String name;
 	
 	@OneToMany 
+	@JsonIgnore
 	private List<Book> books;
 	
 	public Long getCategoryid() {
