@@ -58,13 +58,13 @@ public class BookStoreController {
 	return "redirect:booklist";
 	 
 	 }
-	 @PreAuthorize("hasAuthority('ADMIN')")
+	 @PreAuthorize("hasAuthority('ADMIN')") //turhaa doublewrappingiä... estetty jo urli puolella WebSecConffissa!!
 	 @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	 public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 	 repository.delete(bookId);
 	 return "redirect:../booklist";
 	 }
-	 @PreAuthorize("hasAuthority('ADMIN')")
+	 @PreAuthorize("hasAuthority('ADMIN')")  //turhaa doublewrappingiä... estetty jo urli puolella WebSecConffissa!!
 	 @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	 public String editBook(@PathVariable("id") Long bookId, Model model) {
 	 model.addAttribute("book", repository.findOne(bookId));
