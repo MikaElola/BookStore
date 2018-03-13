@@ -31,5 +31,14 @@ public class UserRepoTest {
 		urepo.save(user);
 		assertThat(user.getId()).isNotNull();
 	}
-	
+	@Test
+	public void deleteUser(){
+		User user = new User("test", "qwerty", "test");
+		urepo.save(user);
+		assertThat(user.getId()).isNotNull();
+		
+		urepo.delete(user.getId());
+		List<User> users = urepo.findByUsername("test");
+		assertThat(users).hasSize(0);
+	}
 }

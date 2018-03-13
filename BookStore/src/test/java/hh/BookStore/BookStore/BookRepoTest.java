@@ -7,6 +7,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import hh.BookStore.BookStore.domain.Category;
 import hh.BookStore.BookStore.domain.Book;
@@ -33,5 +37,15 @@ public class BookRepoTest {
 		brepo.save(book);
 		assertThat(book.getId()).isNotNull();
 	}
-	
+
+	@Test
+	public void deleteBook(){
+		
+		long bookId = 1; 
+		Book book = brepo.findOne(bookId);
+		brepo.delete(book);
+		
+		List<Book> books = (List<Book>) brepo.findAll();
+		assertThat(books).hasSize(1);
+	}
 }

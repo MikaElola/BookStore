@@ -1,7 +1,9 @@
 package hh.BookStore.BookStore;
 
-import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,18 @@ public class CategoryRepoTest {
 		
 		assertThat(categories).hasSize(1);
 	}
+	@Test
+	public void deleteCategory(){
+		Category category = new Category("Test");
+		crepo.save(category);
+		assertThat(category.getCategoryid()).isNotNull();
+		
+		Long id = category.getCategoryid().longValue();
+		crepo.delete(id);
+		
+		List<Category> categories = crepo.findByName("Test");
+		assertThat(categories).hasSize(0);
+	}
 	
 	@Test
 	public void createNewCategory(){
@@ -31,5 +45,7 @@ public class CategoryRepoTest {
 		crepo.save(category);
 		assertThat(category.getCategoryid()).isNotNull();
 	}
+	
+	
 	
 }
