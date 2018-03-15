@@ -20,9 +20,9 @@ public class UserRepoTest {
 	
 	@Test
 	public void findByUserNameShouldReturnUser() {
-		List<User> users = urepo.findByUsername("admin");
+		User user = urepo.findByUsername("admin");
 		
-		assertThat(users).hasSize(1);
+		assertThat(user).isNotNull();
 	}
 	
 	@Test
@@ -38,7 +38,7 @@ public class UserRepoTest {
 		assertThat(user.getId()).isNotNull();
 		
 		urepo.delete(user.getId());
-		List<User> users = urepo.findByUsername("test");
-		assertThat(users).hasSize(0);
+		user = urepo.findByUsername("test");
+		assertThat(user).isNull();
 	}
 }

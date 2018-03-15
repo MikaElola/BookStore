@@ -1,6 +1,5 @@
 package hh.BookStore.BookStore.domain;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,9 +22,6 @@ private String username;
 private String passwordHash;
 @Column(name = "role", nullable = false)
 private String role;
-
-//tää nyt vielä kommenteissa ei siis listaa lista väännetään joskus
-//private List<User> users;
 
 
 public User() {
